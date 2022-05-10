@@ -1,12 +1,17 @@
 package com.mateusmaia.cadastrosimples.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
+@Entity
 public class CadastroDomain implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -16,6 +21,9 @@ public class CadastroDomain implements Serializable {
 	private String nome;
 	private Integer cpf;
 	
+	@OneToMany(mappedBy="cadastro")
+	private List<EnderecoDomain> enderecos = new ArrayList<>();
+
 	public CadastroDomain() {
 	}
 	
@@ -48,6 +56,14 @@ public class CadastroDomain implements Serializable {
 	
 	public void setCpf(Integer cpf) {
 		this.cpf = cpf;
+	}
+
+	public List<EnderecoDomain> getEndereco() {
+		return enderecos;
+	}
+
+	public void setEndereco(List<EnderecoDomain> enderecos) {
+		this.enderecos = enderecos;
 	}
 
 	@Override
