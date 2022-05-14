@@ -18,4 +18,9 @@ public class CadastroService {
 		Optional<CadastroDomain> obj = repo.findById(id);
 		return obj.orElse(null);
 	}
+
+	public CadastroDomain insert(CadastroDomain obj) {
+		obj.setId(null);
+		return repo.save(obj);
+	}
 }
