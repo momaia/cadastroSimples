@@ -37,8 +37,9 @@ public class CadastrosimplesApplication implements CommandLineRunner {
 		EnderecoDomain end3 = new EnderecoDomain(null, cad2, "Av Tavares Lemes, 277", "Sorocaba/SP","14485-292");
 		EnderecoDomain end4 = new EnderecoDomain(null, cad3, "Rua Lucia Lima, 755", "Rio de Janeiro/RJ","18552-315");
 
-		cad1.getEndereco().addAll(Arrays.asList(end1, end3));
-		cad2.getEndereco().addAll(Arrays.asList(end2, end4));
+		cad1.setEndereco(Arrays.asList(end1, end2));
+		cad2.setEndereco(Arrays.asList(end3));
+		cad3.setEndereco(Arrays.asList(end4));
 
 		cadastroRepository.saveAll(Arrays.asList(cad1, cad2, cad3));
 		enderecoRepository.saveAll(Arrays.asList(end1, end2, end3, end4));

@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class CadastroDomain implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -21,6 +23,7 @@ public class CadastroDomain implements Serializable {
 	private String nome;
 	private Integer cpf;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="cadastro")
 	private List<EnderecoDomain> enderecos = new ArrayList<>();
 
