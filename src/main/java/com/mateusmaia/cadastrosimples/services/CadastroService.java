@@ -23,4 +23,9 @@ public class CadastroService {
 		obj.setId(null);
 		return repo.save(obj);
 	}
+
+	public CadastroDomain update(CadastroDomain obj){
+		find(obj.getId());
+		return repo.save(obj);
+	}
 }

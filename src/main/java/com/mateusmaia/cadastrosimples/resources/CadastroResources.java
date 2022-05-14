@@ -22,7 +22,7 @@ public class CadastroResources {
 	private CadastroService service;
 
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id) {
+	public ResponseEntity<CadastroDomain> find(@PathVariable Integer id) {
 		CadastroDomain obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -33,5 +33,12 @@ public class CadastroResources {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
+	}
+
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody CadastroDomain obj, @PathVariable Integer id) {
+		obj.setId(id);
+		obj = service.update(obj);
+		return ResponseEntity.noContent().build();
 	}
 }
